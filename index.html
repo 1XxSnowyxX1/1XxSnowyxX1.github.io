@@ -11,6 +11,7 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:Georgia,'Times New Roman',serif;background:radial-gradient(circle at 50% -10%,#3b145f55,transparent 32%),radial-gradient(circle at 5% 35%,#7c2d1250,transparent 25%),radial-gradient(circle at 95% 70%,#581c8750,transparent 28%),linear-gradient(180deg,#08060d,#100818 45%,#07050b);color:#fff;overflow-x:hidden;min-height:100vh}
 body:before{content:'✦  ☾  ✧  🦇  ✧  ☾  ✦  🕸  ✦  ☾  🦇  ✧';position:fixed;inset:-30%;pointer-events:none;opacity:.10;color:#d8b4fe;font-size:28px;line-height:4;word-spacing:45px;transform:rotate(-13deg);z-index:-2}
 body:after{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at center,transparent 45%,#0009 100%);z-index:-1}
+body.welcome-open{overflow:hidden}
 a{color:inherit;text-decoration:none}
 .wrap{width:min(1120px,92%);margin:auto}
 nav{position:sticky;top:0;background:#08060df2;border-bottom:1px solid #c084fc33;z-index:5;backdrop-filter:blur(14px);box-shadow:0 8px 30px #0008}
@@ -46,9 +47,35 @@ h2:before{content:'☾ ';color:#f97316}
 h3{margin-bottom:8px;color:#f3e8ff}
 footer{text-align:center;padding:45px;border-top:1px solid #c084fc22;color:var(--muted);background:#050409}
 footer:before{content:'🦇  ✦  🕸  ✦  🎃  ✦  🕸  ✦  🦇';display:block;margin-bottom:16px;opacity:.65}
-@media(max-width:800px){.grid{grid-template-columns:1fr}nav a{margin-left:8px;font-size:13px}.hero{padding:80px 0}.hero:before{right:2%;font-size:65px}}
+
+/* Welcome screen */
+.welcome-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:#05030be8;backdrop-filter:blur(8px);opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease}
+.welcome-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.welcome-card{position:relative;width:min(1180px,96vw);height:min(720px,88vh);min-height:520px;overflow:hidden;border:2px solid #e879f9aa;border-radius:24px;box-shadow:0 0 25px #d946ef88,0 0 90px #7c3aed55,inset 0 0 50px #0009;background:#090510}
+.welcome-card:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#05030b22 10%,#08040ddd 72%,#08040df5 100%);z-index:1}
+.welcome-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.welcome-content{position:absolute;z-index:2;left:50%;bottom:8%;transform:translateX(-50%);width:min(850px,88%);text-align:center;padding:30px 24px}
+.welcome-kicker{margin:0 0 10px;color:#f0abfc;letter-spacing:5px;font-size:12px;text-transform:uppercase;text-shadow:0 0 14px #d946ef}
+.welcome-content h1{margin:0 0 12px;font-size:clamp(38px,6vw,76px);line-height:1;background:linear-gradient(135deg,#fff,#f0abfc 45%,#c084fc 75%,#fb923c);-webkit-background-clip:text;color:transparent;text-shadow:0 0 35px #d946ef55}
+.welcome-content p{margin:0 auto 22px;color:#f3e8ff;max-width:700px;font-size:clamp(16px,2vw,21px);line-height:1.55;text-shadow:0 2px 14px #000}
+.welcome-enter{border-radius:999px;padding:14px 28px;font-size:16px;border-color:#f0abfc99;box-shadow:0 0 24px #d946ef66,0 0 55px #7c3aed44}
+.welcome-hint{margin-top:12px;color:#d8c7e8aa;font-size:12px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}nav a{margin-left:8px;font-size:13px}.hero{padding:80px 0}.hero:before{right:2%;font-size:65px}.welcome-card{height:min(760px,92vh);min-height:520px;border-radius:18px}.welcome-image{object-position:center}.welcome-content{bottom:6%;padding:22px 16px}.welcome-content h1{font-size:clamp(34px,9vw,58px)}.welcome-kicker{letter-spacing:3px}}
 </style></head>
-<body><nav><div class="wrap"><a class="logo" href="#home">SNOWY<span>✦</span></a><div><a href="#music">Music</a><a href="#art">Art</a><a href="#about">About</a></div></div></nav>
+<body class="welcome-open">
+<div class="welcome-screen" id="welcomeScreen" role="dialog" aria-modal="true" aria-label="Welcome to Snowy's Music & Art">
+  <div class="welcome-card">
+    <img class="welcome-image" src="https://xormsvpwovolkklpsubo.supabase.co/storage/v1/object/public/Artwork/8fd33d6b-06ba-4fd2-a746-eb9ab60a6a96.png" alt="Snowy's purple bat fursona artwork">
+    <div class="welcome-content">
+      <div class="welcome-kicker">☾ ♡ Welcome, night creature ♡ ☾</div>
+      <h1>Welcome to Snowy's Music & Art</h1>
+      <p>Come in, get comfy, and enjoy your stay. Explore the music, art, and little pieces of imagination waiting for you. ✦</p>
+      <button class="welcome-enter" id="welcomeEnter" type="button">Enter Snowy's World ✦</button>
+      <div class="welcome-hint">Click to begin exploring ♡</div>
+    </div>
+  </div>
+</div>
+<nav><div class="wrap"><a class="logo" href="#home">SNOWY<span>✦</span></a><div><a href="#music">Music</a><a href="#art">Art</a><a href="#about">About</a></div></div></nav>
 <header class="hero" id="home"><div class="wrap"><div class="eyebrow">☾ MUSIC • ART • IMAGINATION • HALLOWEEN ☾</div><h1>Welcome to Snowy</h1><p>A moonlit gothic home for original music, digital art, and strange little creative experiments.</p><a class="btn" href="#music">Enter the night ✦</a></div></header>
 <main class="wrap"><section id="music"><h2>Latest music ♫</h2><p class="muted">Listen to Snowy’s uploaded tracks.</p><div id="musicGrid" class="grid"><div class="empty">Loading music…</div></div></section><section id="art"><h2>Art gallery ✧</h2><p class="muted">A collection of visual creations.</p><div id="artGrid" class="grid"><div class="empty">Loading artwork…</div></div></section><section id="about"><div class="panel"><h2>About Snowy ☾</h2><p>I create atmospheric music and imaginative artwork. This space is where I share new projects, experiments, and things that inspire me.</p></div></section><section><div class="panel" style="text-align:center"><h2>Stay connected ☾</h2><p class="muted">Follow Snowy online.</p><div class="social"><a class="btn secondary" href="https://linktr.ee/Xx_Snowy_xX.Music" target="_blank" rel="noopener">All my links ↗</a></div></div></section></main><footer>Made with ♡ by Snowy ✦</footer>
 <script>
@@ -56,6 +83,11 @@ const SUPABASE_URL='https://xormsvpwovolkklpsubo.supabase.co';
 const SUPABASE_KEY='sb_publishable_9vjJ5Js2zXlK3dGt33psAA_mM5DTkv2';
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 function esc(v){return String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));}
+const welcomeScreen=document.getElementById('welcomeScreen');
+const welcomeEnter=document.getElementById('welcomeEnter');
+function closeWelcome(){welcomeScreen.classList.add('hidden');document.body.classList.remove('welcome-open');setTimeout(()=>welcomeScreen.remove(),700);}
+welcomeEnter.addEventListener('click',closeWelcome);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!welcomeScreen.classList.contains('hidden'))closeWelcome();});
 async function loadContent(){
  const m=document.getElementById('musicGrid'),a=document.getElementById('artGrid');
  const {data:tracks,error:te}=await db.from('music_tracks').select('*').order('created_at',{ascending:false});
