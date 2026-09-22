@@ -5,12 +5,52 @@
 <title>Snowy — Music & Art</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-:root{--p:#a855f7;--pink:#f9a8d4;--p2:#ddd6fe;--bg:#120b22;--muted:#e9d5ff}*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:radial-gradient(circle at 10% 0,#4b2580,transparent 35%),radial-gradient(circle at 100% 100%,#581c87,transparent 35%),var(--bg);color:#fff;overflow-x:hidden}body:before{content:'♡ ✦ ˚₊‧꒰ა ♡ ໒꒱ ‧₊˚ ✧ ♡ ✦';position:fixed;inset:0;pointer-events:none;opacity:.13;color:var(--pink);font-size:34px;line-height:3.2;word-spacing:45px;transform:rotate(-12deg);z-index:-1}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}nav{position:sticky;top:0;background:#120b22ee;border-bottom:1px solid #ffffff22;z-index:2;backdrop-filter:blur(12px)}nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 0}.logo{font-weight:900;letter-spacing:3px}.logo span{color:var(--pink)}nav a{margin-left:16px;color:var(--muted)}.hero{text-align:center;padding:100px 0}.eyebrow{letter-spacing:4px;color:var(--pink);font-size:12px}.hero h1{font-size:clamp(48px,9vw,100px);line-height:1;margin:18px 0;background:linear-gradient(135deg,#fff,#f9a8d4,#c4b5fd);-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:650px;margin:0 auto 28px;font-size:18px}.btn,button{display:inline-block;border:0;border-radius:999px;padding:12px 18px;background:var(--p);color:#fff;font-weight:800;cursor:pointer}.secondary{background:#ffffff14;border:1px solid #ffffff33}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card,.panel{background:#ffffff10;border:1px solid #ffffff22;border-radius:20px;padding:22px;box-shadow:0 12px 35px #0002}.cover{aspect-ratio:1;display:grid;place-items:center;background:linear-gradient(135deg,#fff,#f9a8d4,#8b5cf6);color:#27113e;font-size:60px;border-radius:14px}.art-card{padding:0;overflow:hidden}.art-card img{display:block;width:100%;aspect-ratio:1;object-fit:cover}.muted{color:var(--muted)}section{padding:55px 0}.panel{margin-bottom:20px}.social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.empty{text-align:center;padding:35px;border:1px dashed #ffffff44;border-radius:18px;color:var(--muted)}audio{width:100%;margin-top:12px}h2{color:#f5d0fe}h3{margin-bottom:8px}@media(max-width:800px){.grid{grid-template-columns:1fr}nav a{margin-left:7px;font-size:13px}}
-footer{text-align:center;padding:35px;border-top:1px solid #ffffff22;color:var(--muted)}
+:root{--p:#8b5cf6;--pink:#e879f9;--violet:#c084fc;--orange:#f97316;--bg:#08060d;--bg2:#120b1c;--muted:#d8c7e8;--line:#8b5cf633;--glow:#a855f766}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Georgia,'Times New Roman',serif;background:radial-gradient(circle at 50% -10%,#3b145f55,transparent 32%),radial-gradient(circle at 5% 35%,#7c2d1250,transparent 25%),radial-gradient(circle at 95% 70%,#581c8750,transparent 28%),linear-gradient(180deg,#08060d,#100818 45%,#07050b);color:#fff;overflow-x:hidden;min-height:100vh}
+body:before{content:'✦  ☾  ✧  🦇  ✧  ☾  ✦  🕸  ✦  ☾  🦇  ✧';position:fixed;inset:-30%;pointer-events:none;opacity:.10;color:#d8b4fe;font-size:28px;line-height:4;word-spacing:45px;transform:rotate(-13deg);z-index:-2}
+body:after{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at center,transparent 45%,#0009 100%);z-index:-1}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;background:#08060df2;border-bottom:1px solid #c084fc33;z-index:5;backdrop-filter:blur(14px);box-shadow:0 8px 30px #0008}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-weight:900;letter-spacing:4px;color:#f3e8ff;text-shadow:0 0 14px #c084fc99}
+.logo span{color:var(--orange);text-shadow:0 0 12px #f97316}
+nav a{margin-left:18px;color:#d8c7e8;transition:.2s}
+nav a:hover{color:#f0abfc;text-shadow:0 0 10px #d946ef}
+.hero{text-align:center;padding:115px 0 100px;position:relative}
+.hero:before{content:'☾';position:absolute;right:8%;top:55px;font-size:100px;color:#f5d0fe22;text-shadow:0 0 40px #c084fc66}
+.eyebrow{letter-spacing:5px;color:#f0abfc;font-size:12px;text-shadow:0 0 12px #d946ef}
+.hero h1{font-size:clamp(50px,9vw,104px);line-height:.95;margin:20px 0;background:linear-gradient(135deg,#fff,#e9d5ff 35%,#c084fc 65%,#fb923c);-webkit-background-clip:text;color:transparent;text-shadow:0 0 35px #a855f755}
+.hero p{color:var(--muted);max-width:680px;margin:0 auto 30px;font-size:18px;line-height:1.7}
+.btn,button{display:inline-block;border:1px solid #c084fc66;border-radius:8px;padding:12px 20px;background:linear-gradient(135deg,#6d28d9,#4c1d95);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 0 22px #7c3aed44;transition:.2s}
+.btn:hover,button:hover{transform:translateY(-2px);box-shadow:0 0 30px #a855f777}
+.secondary{background:#160d20;border-color:#f0abfc44}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card,.panel{background:linear-gradient(145deg,#ffffff0c,#ffffff04);border:1px solid var(--line);border-radius:10px;padding:22px;box-shadow:0 15px 45px #0008,inset 0 0 30px #a855f70a;position:relative;overflow:hidden}
+.card:before,.panel:before{content:'✦';position:absolute;right:14px;top:8px;color:#f0abfc55;font-size:14px}
+.cover{aspect-ratio:1;display:grid;place-items:center;background:radial-gradient(circle,#8b5cf655,#12091c 70%);color:#e9d5ff;font-size:60px;border-radius:7px;border:1px solid #c084fc33}
+.art-card{padding:0;overflow:hidden}
+.art-card:before{z-index:2}
+.art-card img{display:block;width:100%;aspect-ratio:1;object-fit:cover;filter:saturate(.9) contrast(1.05);transition:.35s}
+.art-card:hover img{transform:scale(1.04);filter:saturate(1.1) contrast(1.08)}
+.muted{color:var(--muted)}
+section{padding:65px 0}
+.panel{margin-bottom:20px}
+.social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.empty{text-align:center;padding:35px;border:1px dashed #c084fc44;border-radius:10px;color:var(--muted);background:#0e0815}
+audio{width:100%;margin-top:12px;accent-color:#a855f7}
+h2{color:#f0abfc;letter-spacing:2px;text-shadow:0 0 16px #d946ef55}
+h2:before{content:'☾ ';color:#f97316}
+h3{margin-bottom:8px;color:#f3e8ff}
+footer{text-align:center;padding:45px;border-top:1px solid #c084fc22;color:var(--muted);background:#050409}
+footer:before{content:'🦇  ✦  🕸  ✦  🎃  ✦  🕸  ✦  🦇';display:block;margin-bottom:16px;opacity:.65}
+@media(max-width:800px){.grid{grid-template-columns:1fr}nav a{margin-left:8px;font-size:13px}.hero{padding:80px 0}.hero:before{right:2%;font-size:65px}}
 </style></head>
 <body><nav><div class="wrap"><a class="logo" href="#home">SNOWY<span>✦</span></a><div><a href="#music">Music</a><a href="#art">Art</a><a href="#about">About</a></div></div></nav>
-<header class="hero" id="home"><div class="wrap"><div class="eyebrow">♡ MUSIC • ART • IMAGINATION ♡</div><h1>Welcome to Snowy</h1><p>A cute purple-and-pink home for original music, digital art, and creative experiments.</p><a class="btn" href="#music">Explore my work ✦</a></div></header>
-<main class="wrap"><section id="music"><h2>Latest music ♫</h2><p class="muted">Listen to Snowy’s uploaded tracks.</p><div id="musicGrid" class="grid"><div class="empty">Loading music…</div></div></section><section id="art"><h2>Art gallery ✧</h2><p class="muted">A collection of visual creations.</p><div id="artGrid" class="grid"><div class="empty">Loading artwork…</div></div></section><section id="about"><div class="panel"><h2>About Snowy ♡</h2><p>I create atmospheric music and imaginative artwork. This space is where I share new projects, experiments, and things that inspire me.</p></div></section><section><div class="panel" style="text-align:center"><h2>Stay connected ♡</h2><p class="muted">Follow Snowy online.</p><div class="social"><a class="btn secondary" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube ↗</a><a class="btn secondary" href="https://soundcloud.com/" target="_blank" rel="noopener">SoundCloud ↗</a><a class="btn secondary" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram ↗</a></div></div></section></main><footer>Made with ♡ by Snowy ✦</footer>
+<header class="hero" id="home"><div class="wrap"><div class="eyebrow">☾ MUSIC • ART • IMAGINATION • HALLOWEEN ☾</div><h1>Welcome to Snowy</h1><p>A moonlit gothic home for original music, digital art, and strange little creative experiments.</p><a class="btn" href="#music">Enter the night ✦</a></div></header>
+<main class="wrap"><section id="music"><h2>Latest music ♫</h2><p class="muted">Listen to Snowy’s uploaded tracks.</p><div id="musicGrid" class="grid"><div class="empty">Loading music…</div></div></section><section id="art"><h2>Art gallery ✧</h2><p class="muted">A collection of visual creations.</p><div id="artGrid" class="grid"><div class="empty">Loading artwork…</div></div></section><section id="about"><div class="panel"><h2>About Snowy ☾</h2><p>I create atmospheric music and imaginative artwork. This space is where I share new projects, experiments, and things that inspire me.</p></div></section><section><div class="panel" style="text-align:center"><h2>Stay connected ☾</h2><p class="muted">Follow Snowy online.</p><div class="social"><a class="btn secondary" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube ↗</a><a class="btn secondary" href="https://soundcloud.com/" target="_blank" rel="noopener">SoundCloud ↗</a><a class="btn secondary" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram ↗</a></div></div></section></main><footer>Made with ♡ by Snowy ✦</footer>
 <script>
 const SUPABASE_URL='https://xormsvpwovolkklpsubo.supabase.co';
 const SUPABASE_KEY='sb_publishable_9vjJ5Js2zXlK3dGt33psAA_mM5DTkv2';
