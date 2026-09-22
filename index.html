@@ -21,7 +21,7 @@ async function loadContent(){
  const {data:tracks,error:te}=await db.from('music_tracks').select('*').order('created_at',{ascending:false});
  if(te)m.innerHTML='<div class="empty">Music is temporarily unavailable.</div>';else if(!tracks?.length)m.innerHTML='<div class="empty">No songs published yet.</div>';else m.innerHTML=tracks.map(t=>`<article class="card"><div class="cover">♫</div><h3>${esc(t.title||'Untitled track')}</h3><p class="muted">${esc(t.artist||'Snowy')} · ${esc(t.description||'')}</p>${t.audio_url?`<audio controls preload="metadata" src="${esc(t.audio_url)}"></audio>`:''}</article>`).join('');
  const {data:art,error:ae}=await db.from('artworks').select('*').order('created_at',{ascending:false});
- if(ae)a.innerHTML='<div class="empty">Artwork is temporarily unavailable.</div>';else if(!art?.length)a.innerHTML='<div class="empty">No artwork published yet.</div>';else a.innerHTML=art.map(x=>`<article class="card">${x.image_url?`<img class="cover" style="width:100%;object-fit:cover" src="${esc(x.image_url)}" alt="${esc(x.title||'Artwork')}">`:'<div class="cover">✦</div>'}<h3>${esc(x.title||'Untitled artwork')}</h3><p class="muted">${esc(x.description||'')}</p></article>`).join('');
+ if(ae)a.innerHTML='<div class="empty">Artwork is temporarily unavailable.</div>';else if(!art?.length)a.innerHTML='<div class="empty">No artwork published yet.</div>';else a.innerHTML=art.map(x=>`<article class="card">${x.image_url?`<img class="cover" style="width:100%;object-fit:cover" src="${esc(x.image_url)}" alt="${esc(x.title||'Artwork')}">`:'<div class="cover">✦</div>'}</article>`).join('');
 }
 loadContent();
 </script></body></html>
