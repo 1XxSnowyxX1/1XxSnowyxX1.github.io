@@ -1,1 +1,1 @@
-# 1XxSnowyxX1.github.io
+# XxSnowyxX.github.io
